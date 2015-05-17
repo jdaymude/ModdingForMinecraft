@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "normal": { "model": "lavabomb:lavabomb" },
+        "explode=false": { "model": "lavabomb:lavabomb" },
+        "explode=true": { "model": "lavabomb:lavabomb" }
+    }
+}

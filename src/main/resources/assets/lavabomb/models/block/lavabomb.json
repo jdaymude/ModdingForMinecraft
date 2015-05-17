@@ -1,0 +1,12 @@
+{
+    "parent": "block/cube",
+    "textures": {
+        "up": "lavabomb:blocks/lavabomb_top",
+        "down": "lavabomb:blocks/lavabomb_bottom",
+        "east": "lavabomb:blocks/lavabomb_side",
+        "south": "lavabomb:blocks/lavabomb_side",
+        "west": "lavabomb:blocks/lavabomb_side",
+        "north": "lavabomb:blocks/lavabomb_side",
+        "particle": "lavabomb:blocks/lavabomb_side"
+    }
+}
