@@ -1,8 +1,10 @@
 package teachstevecode.car;
 
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -52,7 +54,14 @@ public class EntityCar extends Entity
         
         this.itemCar = (Item) Item.itemRegistry.getObject(new ResourceLocation("itemCar"));
     }
-
+    
+    
+    /*
+    //Type of block to spawn
+    IBlockState blockState = Blocks.lava.getDefaultState();
+    */
+    
+    
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
      * prevent them from trampling crops
@@ -133,7 +142,7 @@ public class EntityCar extends Entity
             {
                 this.setForwardDirection(-this.getForwardDirection());
                 this.setTimeSinceHit(10);
-                this.setDamageTaken(this.getDamageTaken() + amount * 10.0F);
+                this.setDamageTaken(this.getDamageTaken() + amount / 100.0F);
                 this.setBeenAttacked();
                 boolean flag = source.getEntity() instanceof EntityPlayer && ((EntityPlayer)source.getEntity()).capabilities.isCreativeMode;
 
@@ -169,7 +178,7 @@ public class EntityCar extends Entity
     {
         this.setForwardDirection(-this.getForwardDirection());
         this.setTimeSinceHit(10);
-        this.setDamageTaken(this.getDamageTaken() * 11.0F);
+        this.setDamageTaken(this.getDamageTaken() / 100.0F);
     }
 
     /**
@@ -296,6 +305,7 @@ public class EntityCar extends Entity
                     d7 = this.posX - d2 * d5 * 0.8D + d4 * d6;
                     d8 = this.posZ - d4 * d5 * 0.8D - d2 * d6;
                     this.worldObj.spawnParticle(EnumParticleTypes.WATER_SPLASH, d7, this.posY - 0.125D, d8, this.motionX, this.motionY, this.motionZ, new int[0]);
+                    //this.worldObj.spawnParticle(EnumParticleTypes.WATER_SPLASH, d7, this.posY - 0.125D, d8, this.motionX, this.motionY, this.motionZ, new int[0]);
                 }
                 else
                 {
@@ -332,9 +342,9 @@ public class EntityCar extends Entity
 
                 if (this.onGround)
                 {
-                    this.motionX *= 0.5D;
-                    this.motionY *= 0.5D;
-                    this.motionZ *= 0.5D;
+                    this.motionX *= 1.0D;
+                    this.motionY *= 1.0D;
+                    this.motionZ *= 1.0D;
                 }
 
                 this.motionX *= 0.9900000095367432D;
@@ -408,6 +418,9 @@ public class EntityCar extends Entity
                     int k = MathHelper.floor_double(this.posY) + j1;
                     BlockPos blockpos = new BlockPos(i1, k, j);
                     Block block = this.worldObj.getBlockState(blockpos).getBlock();
+                    
+                    
+                   
 
                     if (block == Blocks.snow_layer)
                     {
@@ -419,14 +432,15 @@ public class EntityCar extends Entity
                         this.worldObj.destroyBlock(blockpos, true);
                         this.isCollidedHorizontally = false;
                     }
+                    
                 }
             }
 
             if (this.onGround)
             {
-                this.motionX *= 0.5D;
-                this.motionY *= 0.5D;
-                this.motionZ *= 0.5D;
+            	this.motionX *= 1.0D;
+                this.motionY *= 1.0D;
+                this.motionZ *= 1.0D;
             }
 
             this.moveEntity(this.motionX, this.motionY, this.motionZ);
@@ -435,16 +449,43 @@ public class EntityCar extends Entity
             {
                 if (!this.worldObj.isRemote && !this.isDead)
                 {
-                    this.setDead();
+                	
+                	int radius = 2;
+                	int center = radius/2;
+                	
+                	
+                	
+                	/*
+                	 * Generates blocks in a sphere shape
+                    for (int x = center - radius; x < center + radius; x++) 
+                    {
+                    	for (int y = center - radius; y < center + radius; y++) 
+                    	{
+                    		for (int z = center - radius; z < center + radius; z++) 
+                    		{
+                    			int squareDistance = (x - center) * (x - center) + (y - center) * (y - center) + (z - center) * (z - center);
+                    			
+                    			if (squareDistance <= radius * radius) 
+                    			{
+                    				BlockPos blockpos = new BlockPos((double)((float)this.posX + x), (double)((float)this.posY + y), (double)((float)this.posZ + z));
+                                    this.worldObj.setBlockState(blockpos, blockState);
+                    			}
+                    		}
+                    	}
+                    }
+                    */
+                    
+                    
+                    //this.setDead();
 
                     for (l = 0; l < 3; ++l)
                     {
-                        this.dropItemWithOffset(Item.getItemFromBlock(Blocks.planks), 1, 0.0F);
+                        //this.dropItemWithOffset(Item.getItemFromBlock(Blocks.planks), 1, 0.0F);
                     }
 
                     for (l = 0; l < 2; ++l)
                     {
-                        this.dropItemWithOffset(Items.stick, 1, 0.0F);
+                        //this.dropItemWithOffset(Items.stick, 1, 0.0F);
                     }
                 }
             }
@@ -549,9 +590,9 @@ public class EntityCar extends Entity
     {
         if (p_180433_3_)
         {
-            if (this.fallDistance > 3.0F)
+            if (this.fallDistance > 30.0F)
             {
-                this.fall(this.fallDistance, 1.0F);
+                this.fall(this.fallDistance, 10.0F);
 
                 if (!this.worldObj.isRemote && !this.isDead)
                 {
