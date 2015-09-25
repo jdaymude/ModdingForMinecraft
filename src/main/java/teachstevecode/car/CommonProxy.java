@@ -1,5 +1,7 @@
 package teachstevecode.car;
 
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -24,6 +26,6 @@ public class CommonProxy
     
     public void registerRenderers() 
     {
-    	
+
     }
 }

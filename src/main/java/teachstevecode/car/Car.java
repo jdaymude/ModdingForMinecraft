@@ -39,7 +39,8 @@ public class Car
         this.proxy.init(e);
         
         GameRegistry.registerItem(itemCar = new ItemCar("car"), "itemCar");
-        EntityRegistry.registerModEntity(EntityCar.class, "car", 51, this, 256, 1, false);
+        EntityRegistry.registerModEntity(EntityCar.class, "car", 51, this, 256, 1, false);        
+        RenderingRegistry.registerEntityRenderingHandler(EntityCar.class, new RenderCar(Minecraft.getMinecraft().getRenderManager()));
     }
 
     @EventHandler

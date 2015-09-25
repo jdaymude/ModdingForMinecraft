@@ -1,5 +1,8 @@
 package teachstevecode.car;
 
+import teachstevecode.lavabomb.EntityLavaBombPrimed;
+import teachstevecode.lavabomb.LavaBomb;
+import teachstevecode.lavabomb.RenderLavaBombPrimed;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -21,6 +24,7 @@ public class ClientProxy extends CommonProxy
 	public void init(FMLInitializationEvent e) 
 	{
 		super.init(e);
+		
 	}
 
 	@Override
