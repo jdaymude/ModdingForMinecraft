@@ -146,7 +146,8 @@ public class EntityCar extends Entity
                 this.setBeenAttacked();
                 boolean flag = source.getEntity() instanceof EntityPlayer && ((EntityPlayer)source.getEntity()).capabilities.isCreativeMode;
 
-                if (flag || this.getDamageTaken() > 40.0F)
+//                if (flag || this.getDamageTaken() > 40.0F)
+                if (flag || this.getDamageTaken() > 1000.0F)
                 {
                     if (this.riddenByEntity != null)
                     {
@@ -268,53 +269,53 @@ public class EntityCar extends Entity
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
+        
         byte b0 = 5;
         double d0 = 0.0D;
 
-        for (int i = 0; i < b0; ++i)
-        {
-            double d1 = this.getEntityBoundingBox().minY + (this.getEntityBoundingBox().maxY - this.getEntityBoundingBox().minY) * (double)(i + 0) / (double)b0 - 0.125D;
-            double d3 = this.getEntityBoundingBox().minY + (this.getEntityBoundingBox().maxY - this.getEntityBoundingBox().minY) * (double)(i + 1) / (double)b0 - 0.125D;
-            AxisAlignedBB axisalignedbb = new AxisAlignedBB(this.getEntityBoundingBox().minX, d1, this.getEntityBoundingBox().minZ, this.getEntityBoundingBox().maxX, d3, this.getEntityBoundingBox().maxZ);
-
-            if (this.worldObj.isAABBInMaterial(axisalignedbb, Material.water))
-            {
-                d0 += 1.0D / (double)b0;
-            }
-        }
+//        for (int i = 0; i < b0; ++i)
+//        {
+//            double d1 = this.getEntityBoundingBox().minY + (this.getEntityBoundingBox().maxY - this.getEntityBoundingBox().minY) * (double)(i + 0) / (double)b0 - 0.125D;
+//            double d3 = this.getEntityBoundingBox().minY + (this.getEntityBoundingBox().maxY - this.getEntityBoundingBox().minY) * (double)(i + 1) / (double)b0 - 0.125D;
+//            AxisAlignedBB axisalignedbb = new AxisAlignedBB(this.getEntityBoundingBox().minX, d1, this.getEntityBoundingBox().minZ, this.getEntityBoundingBox().maxX, d3, this.getEntityBoundingBox().maxZ);
+//
+//            if (this.worldObj.isAABBInMaterial(axisalignedbb, Material.water))
+//            {
+//                d0 += 1.0D / (double)b0;
+//            }
+//        }
 
         double d9 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
         double d2;
         double d4;
         int j;
 
-        if (d9 > 0.2975D)
-        {
-            d2 = Math.cos((double)this.rotationYaw * Math.PI / 180.0D);
-            d4 = Math.sin((double)this.rotationYaw * Math.PI / 180.0D);
-
-            for (j = 0; (double)j < 1.0D + d9 * 60.0D; ++j)
-            {
-                double d5 = (double)(this.rand.nextFloat() * 2.0F - 1.0F);
-                double d6 = (double)(this.rand.nextInt(2) * 2 - 1) * 0.7D;
-                double d7;
-                double d8;
-
-                if (this.rand.nextBoolean())
-                {
-                    d7 = this.posX - d2 * d5 * 0.8D + d4 * d6;
-                    d8 = this.posZ - d4 * d5 * 0.8D - d2 * d6;
-                    this.worldObj.spawnParticle(EnumParticleTypes.WATER_SPLASH, d7, this.posY - 0.125D, d8, this.motionX, this.motionY, this.motionZ, new int[0]);
-                    //this.worldObj.spawnParticle(EnumParticleTypes.WATER_SPLASH, d7, this.posY - 0.125D, d8, this.motionX, this.motionY, this.motionZ, new int[0]);
-                }
-                else
-                {
-                    d7 = this.posX + d2 + d4 * d5 * 0.7D;
-                    d8 = this.posZ + d4 - d2 * d5 * 0.7D;
-                    this.worldObj.spawnParticle(EnumParticleTypes.WATER_SPLASH, d7, this.posY - 0.125D, d8, this.motionX, this.motionY, this.motionZ, new int[0]);
-                }
-            }
-        }
+//        if (d9 > 0.2975D)
+//        {
+//            d2 = Math.cos((double)this.rotationYaw * Math.PI / 180.0D);
+//            d4 = Math.sin((double)this.rotationYaw * Math.PI / 180.0D);
+//
+//            for (j = 0; (double)j < 1.0D + d9 * 60.0D; ++j)
+//            {
+//                double d5 = (double)(this.rand.nextFloat() * 2.0F - 1.0F);
+//                double d6 = (double)(this.rand.nextInt(2) * 2 - 1) * 0.7D;
+//                double d7;
+//                double d8;
+//
+//                if (this.rand.nextBoolean())
+//                {
+//                    d7 = this.posX - d2 * d5 * 0.8D + d4 * d6;
+//                    d8 = this.posZ - d4 * d5 * 0.8D - d2 * d6;
+//                    this.worldObj.spawnParticle(EnumParticleTypes.WATER_SPLASH, d7, this.posY - 0.125D, d8, this.motionX, this.motionY, this.motionZ, new int[0]);
+//                }
+//                else
+//                {
+//                    d7 = this.posX + d2 + d4 * d5 * 0.7D;
+//                    d8 = this.posZ + d4 - d2 * d5 * 0.7D;
+//                    this.worldObj.spawnParticle(EnumParticleTypes.WATER_SPLASH, d7, this.posY - 0.125D, d8, this.motionX, this.motionY, this.motionZ, new int[0]);
+//                }
+//            }
+//        }
 
         double d10;
         double d11;
@@ -418,9 +419,6 @@ public class EntityCar extends Entity
                     int k = MathHelper.floor_double(this.posY) + j1;
                     BlockPos blockpos = new BlockPos(i1, k, j);
                     Block block = this.worldObj.getBlockState(blockpos).getBlock();
-                    
-                    
-                   
 
                     if (block == Blocks.snow_layer)
                     {
@@ -432,7 +430,6 @@ public class EntityCar extends Entity
                         this.worldObj.destroyBlock(blockpos, true);
                         this.isCollidedHorizontally = false;
                     }
-                    
                 }
             }
 
@@ -445,55 +442,55 @@ public class EntityCar extends Entity
 
             this.moveEntity(this.motionX, this.motionY, this.motionZ);
 
-            if (this.isCollidedHorizontally && d9 > 0.2D)
-            {
+//            if (this.isCollidedHorizontally && d9 > 0.2D)
+            if (this.isCollidedHorizontally)
+            {            	
                 if (!this.worldObj.isRemote && !this.isDead)
-                {
+                {   
+                	int facingDirection = (int) this.rotationYaw;
                 	
-                	int radius = 2;
-                	int center = radius/2;
+                	if (facingDirection < 0) {
+                		facingDirection += 360;
+                	}
+                	                	
+                	int changeX = 0;
+                	int changeZ = 0;
                 	
+                	if (facingDirection > 0 && facingDirection < 180) {
+                		changeX = 1;
+                	}
+                	else {
+                		changeX = -1;
+                	}
                 	
+                	if (facingDirection > 90 && facingDirection < 270) {
+                		changeZ = 1;
+                	}
+                	else {
+                		changeZ = -1;
+                	}
                 	
-                	/*
-                	 * Generates blocks in a sphere shape
-                    for (int x = center - radius; x < center + radius; x++) 
-                    {
-                    	for (int y = center - radius; y < center + radius; y++) 
-                    	{
-                    		for (int z = center - radius; z < center + radius; z++) 
-                    		{
-                    			int squareDistance = (x - center) * (x - center) + (y - center) * (y - center) + (z - center) * (z - center);
-                    			
-                    			if (squareDistance <= radius * radius) 
-                    			{
-                    				BlockPos blockpos = new BlockPos((double)((float)this.posX + x), (double)((float)this.posY + y), (double)((float)this.posZ + z));
-                                    this.worldObj.setBlockState(blockpos, blockState);
-                    			}
-                    		}
-                    	}
-                    }
-                    */
+                	double newX = this.posX + changeX;
+                	double newY = this.posY + 1;
+                	double newZ = this.posZ + changeZ;
+                	
+                	BlockPos blockPos = new BlockPos(newX, newY, newZ);
+                    Block block = this.worldObj.getBlockState(blockPos).getBlock();
                     
-                    
-                    //this.setDead();
-
-                    for (l = 0; l < 3; ++l)
-                    {
-                        //this.dropItemWithOffset(Item.getItemFromBlock(Blocks.planks), 1, 0.0F);
-                    }
-
-                    for (l = 0; l < 2; ++l)
-                    {
-                        //this.dropItemWithOffset(Items.stick, 1, 0.0F);
+                    if (block == Blocks.air) {
+                    	this.setPosition(newX, newY, newZ);
                     }
                 }
             }
             else
             {
-                this.motionX *= 0.9900000095367432D;
-                this.motionY *= 0.949999988079071D;
-                this.motionZ *= 0.9900000095367432D;
+//                this.motionX *= 0.9900000095367432D;
+//                this.motionY *= 0.949999988079071D;
+//                this.motionZ *= 0.9900000095367432D;
+            	
+            	this.motionX *= 0.95;
+            	this.motionY *= 0.95;
+            	this.motionZ *= 0.95;
             }
 
             this.rotationPitch = 0.0F;
