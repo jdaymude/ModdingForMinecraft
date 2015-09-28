@@ -1,5 +1,10 @@
-package teachstevecode.car;
+package teachstevecode.watergun;
 
+import teachstevecode.car.Car;
+import teachstevecode.car.CommonProxy;
+import teachstevecode.car.EntityCar;
+import teachstevecode.car.ItemCar;
+import teachstevecode.car.RenderCar;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.item.Item;
@@ -14,16 +19,16 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = Car.MODID, name = Car.MODNAME, version = Car.MODVER)
-public class Car
+@Mod(modid = WaterGun.MODID, name = WaterGun.MODNAME, version = WaterGun.MODVER)
+public class WaterGun 
 {
-    public static final String MODID = "car";
-    public static final String MODNAME = "Car";
+	public static final String MODID = "watergun";
+    public static final String MODNAME = "Water Gun";
     public static final String MODVER = "1.0.0";
     
-    @Instance(value = "car")
-    public static Car instance = new Car();
-    public static ItemCar itemCar;
+    @Instance(value = "watergun")
+    public static WaterGun instance = new WaterGun();
+    public static ItemWaterGun waterGun;
 
     @SidedProxy(clientSide = "teachstevecode.car.ClientProxy", serverSide = "teachstevecode.car.ServerProxy")
     public static CommonProxy proxy;
@@ -39,11 +44,7 @@ public class Car
     {
         this.proxy.init(e);
         
-        GameRegistry.registerItem(itemCar = new ItemCar("car"), "itemCar");
-        EntityRegistry.registerModEntity(EntityCar.class, "car", 51, this, 256, 1, false);        
-        RenderingRegistry.registerEntityRenderingHandler(EntityCar.class, new RenderCar(Minecraft.getMinecraft().getRenderManager()));
-        
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getByNameOrId(Car.MODID), 0, new ModelResourceLocation(Car.MODID, "models/item/car.json"));
+        GameRegistry.registerItem(waterGun = new ItemWaterGun(), "Water Gun");
     }
 
     @EventHandler

@@ -1,4 +1,4 @@
-package teachstevecode.car;
+package teachstevecode.watergun;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -35,4 +35,3 @@ public class ClientProxy extends CommonProxy
 		
 	}
 }
-

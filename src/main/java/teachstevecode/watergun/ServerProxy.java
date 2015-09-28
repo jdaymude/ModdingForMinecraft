@@ -1,15 +1,10 @@
-package teachstevecode.car;
+package teachstevecode.watergun;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 
-public class ClientProxy extends CommonProxy 
+public class ServerProxy extends CommonProxy 
 {
 	@Override
 	public void preInit(FMLPreInitializationEvent e) 
@@ -28,11 +23,4 @@ public class ClientProxy extends CommonProxy
 	{
 		super.postInit(e);
 	}
-	
-	@Override
-	public void registerRenderers() 
-	{
-		
-	}
 }
-

@@ -1,4 +1,4 @@
-package teachstevecode.car;
+package teachstevecode.watergun;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
