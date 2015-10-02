@@ -159,7 +159,7 @@ public class EntityCar extends Entity
                         this.dropItemWithOffset(itemCar, 1, 0.0F);
                     }
 
-                    this.setDead();
+                    //this.setDead();
                 }
 
                 return true;
@@ -587,23 +587,24 @@ public class EntityCar extends Entity
     {
         if (p_180433_3_)
         {
-            if (this.fallDistance > 30.0F)
+            if (this.fallDistance > 300.0F)
             {
                 this.fall(this.fallDistance, 10.0F);
 
                 if (!this.worldObj.isRemote && !this.isDead)
                 {
-                    this.setDead();
+                    //this.setDead();
                     int i;
 
                     for (i = 0; i < 3; ++i)
                     {
-                        this.dropItemWithOffset(Item.getItemFromBlock(Blocks.planks), 1, 0.0F);
+                    	 
+                        //this.dropItemWithOffset(Item.getItemFromBlock(Blocks.planks), 1, 0.0F);
                     }
 
                     for (i = 0; i < 2; ++i)
                     {
-                        this.dropItemWithOffset(Items.stick, 1, 0.0F);
+                        //this.dropItemWithOffset(Items.stick, 1, 0.0F);
                     }
                 }
 
