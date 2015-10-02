@@ -30,7 +30,9 @@ public class Car
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent e) 
-    {
+    {        
+        itemCar = new ItemCar("car");
+        
         this.proxy.preInit(e);
     }
 
@@ -39,11 +41,9 @@ public class Car
     {
         this.proxy.init(e);
         
-        GameRegistry.registerItem(itemCar = new ItemCar("car"), "itemCar");
+        GameRegistry.registerItem(itemCar, itemCar.getUnlocalizedName().substring(5));     
         EntityRegistry.registerModEntity(EntityCar.class, "car", 51, this, 256, 1, false);        
-        RenderingRegistry.registerEntityRenderingHandler(EntityCar.class, new RenderCar(Minecraft.getMinecraft().getRenderManager()));
-        
-        Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getByNameOrId(Car.MODID), 0, new ModelResourceLocation(Car.MODID, "models/item/car.json"));
+        RenderingRegistry.registerEntityRenderingHandler(EntityCar.class, new RenderCar(Minecraft.getMinecraft().getRenderManager()));        
     }
 
     @EventHandler
