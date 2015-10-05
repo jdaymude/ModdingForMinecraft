@@ -1,4 +1,4 @@
-package teachstevecode.watergun;
+package teachstevecode.launcher;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;

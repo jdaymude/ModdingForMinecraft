@@ -1,19 +1,19 @@
-package teachstevecode.watergun;
+package teachstevecode.launcher;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import teachstevecode.launcher.grenade.EntityGrenade;
 
-public class ItemWaterGun extends Item 
+public class ItemLauncher extends Item 
 {
-	public ItemWaterGun() 
+	public ItemLauncher(String unlocalizedName) 
 	{
 		super();
 		
-		this.setUnlocalizedName("watergun");
+		this.setUnlocalizedName(unlocalizedName);
         this.setCreativeTab(CreativeTabs.tabCombat);
 	}
 	
@@ -28,7 +28,7 @@ public class ItemWaterGun extends Item
 	      
 	      if (!par2World.isRemote)
 	      {
-	          par2World.spawnEntityInWorld(new EntityWaterBullet(par2World, par3EntityPlayer));
+	          par2World.spawnEntityInWorld(new EntityGrenade(par2World, par3EntityPlayer));
 	      }
 	      
 	      return par1ItemStack;

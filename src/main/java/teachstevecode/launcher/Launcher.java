@@ -1,14 +1,6 @@
-package teachstevecode.watergun;
+package teachstevecode.launcher;
 
-import teachstevecode.car.Car;
-import teachstevecode.car.CommonProxy;
-import teachstevecode.car.EntityCar;
-import teachstevecode.car.ItemCar;
-import teachstevecode.car.RenderCar;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
+
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -18,33 +10,39 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import teachstevecode.launcher.grenade.EntityGrenade;
 
-@Mod(modid = WaterGun.MODID, name = WaterGun.MODNAME, version = WaterGun.MODVER)
-public class WaterGun 
+@Mod(modid = Launcher.MODID, name = Launcher.MODNAME, version = Launcher.MODVER)
+public class Launcher 
 {
-	public static final String MODID = "watergun";
-    public static final String MODNAME = "Water Gun";
+	public static final String MODID = "launcher";
+    public static final String MODNAME = "Launcher";
     public static final String MODVER = "1.0.0";
     
-    @Instance(value = "watergun")
-    public static WaterGun instance = new WaterGun();
-    public static ItemWaterGun waterGun;
+    @Instance(MODID)
+    public static Launcher instance = new Launcher();
+    public static ItemLauncher launcher;
 
-    @SidedProxy(clientSide = "teachstevecode.car.ClientProxy", serverSide = "teachstevecode.car.ServerProxy")
+    @SidedProxy(clientSide = "teachstevecode.launcher.ClientProxy", serverSide = "teachstevecode.launcher.ServerProxy")
     public static CommonProxy proxy;
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent e) 
     {
         this.proxy.preInit(e);
+        
+        launcher = new ItemLauncher(MODID);
     }
 
     @EventHandler
     public void init(FMLInitializationEvent e) 
     {
         this.proxy.init(e);
-        
-        GameRegistry.registerItem(waterGun = new ItemWaterGun(), "Water Gun");
+
+        // Register Items
+        GameRegistry.registerItem(launcher, launcher.getUnlocalizedName().substring(5));
+
+        EntityRegistry.registerModEntity(EntityGrenade.class, "grenade", 53, this, 256, 1, false);        
     }
 
     @EventHandler

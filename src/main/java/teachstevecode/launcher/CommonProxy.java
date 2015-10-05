@@ -1,4 +1,4 @@
-package teachstevecode.watergun;
+package teachstevecode.launcher;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.Item;
