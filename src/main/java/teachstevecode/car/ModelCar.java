@@ -15,67 +15,65 @@ public class ModelCar extends ModelBase
 {
   //fields
     ModelRenderer CarBase;
-    ModelRenderer Shape1;
-    ModelRenderer Shape2;
-    ModelRenderer Shape3;
-    ModelRenderer Shape4;
+    ModelRenderer Wheel1;
+    ModelRenderer Wheel2;
+    ModelRenderer Wheel3;
+    ModelRenderer Wheel4;
     ModelRenderer Bumper;
 
   public ModelCar()
   {
-    textureWidth = 128;
-    textureHeight = 32;
-
-      CarBase.mirror = true;
-      CarBase = new ModelRenderer(this, 0, 0);
-      CarBase.addBox(0F, 0F, 0F, 20, 6, 16);
-      CarBase.setRotationPoint(-10F, 16F, -8F);
-      CarBase.setTextureSize(128, 32);
-      CarBase.mirror = true;
-      setRotation(CarBase, 0F, 0F, 0F);
-      CarBase.mirror = false;
-      Shape1 = new ModelRenderer(this, 0, 22);
-      Shape1.addBox(0F, 0F, 0F, 5, 5, 2);
-      Shape1.setRotationPoint(-8F, 18F, -10F);
-      Shape1.setTextureSize(128, 32);
-      Shape1.mirror = true;
-      setRotation(Shape1, 0F, 0F, 0F);
-      Shape2 = new ModelRenderer(this, 0, 22);
-      Shape2.addBox(3F, 18F, -10F, 5, 5, 2);
-      Shape2.setRotationPoint(0F, 0F, 0F);
-      Shape2.setTextureSize(128, 32);
-      Shape2.mirror = true;
-      setRotation(Shape1, 0F, 0F, 0F);
-      Shape3 = new ModelRenderer(this, 0, 22);
-      Shape3.addBox(0F, 0F, 0F, 5, 5, 2);
-      Shape3.setRotationPoint(-8F, 18F, 8F);
-      Shape3.setTextureSize(128, 32);
-      Shape3.mirror = true;
-      setRotation(Shape1, 0F, 0F, 0F);
-      Shape4 = new ModelRenderer(this, 0, 22);
-      Shape4.addBox(0F, 0F, 0F, 5, 5, 2);
-      Shape4.setRotationPoint(3F, 18F, 8F);
-      Shape4.setTextureSize(128, 32);
-      Shape4.mirror = true;
-      setRotation(Shape1, 0F, 0F, 0F);
-      Bumper = new ModelRenderer(this, 72, 0);
-      Bumper.addBox(0F, 0F, 0F, 2, 6, 18);
-      Bumper.setRotationPoint(-12F, 14F, -9F);
-      Bumper.setTextureSize(128, 32);
-      Bumper.mirror = true;
-      setRotation(Bumper, 0F, 0F, 0F);
+	    textureWidth = 128;
+	    textureHeight = 32;
+	    
+	      CarBase = new ModelRenderer(this, 0, 0);
+	      CarBase.addBox(0F, 0F, 0F, 20, 6, 16);
+	      CarBase.setRotationPoint(-10F, -7F, -8F);
+	      CarBase.setTextureSize(128, 32);
+	      CarBase.mirror = true;
+	      setRotation(CarBase, 0F, 0F, 0F);
+	      Wheel1 = new ModelRenderer(this, 0, 22);
+	      Wheel1.addBox(0F, 0F, 0F, 5, 5, 2);
+	      Wheel1.setRotationPoint(-8F, -4F, -10F);
+	      Wheel1.setTextureSize(128, 32);
+	      Wheel1.mirror = true;
+	      setRotation(Wheel1, 0F, 0F, 0F);
+	      Wheel2 = new ModelRenderer(this, 0, 22);
+	      Wheel2.addBox(0F, 0F, 0F, 5, 5, 2);
+	      Wheel2.setRotationPoint(4F, -4F, -10F);
+	      Wheel2.setTextureSize(128, 32);
+	      Wheel2.mirror = true;
+	      setRotation(Wheel2, 0F, 0F, 0F);
+	      Wheel3 = new ModelRenderer(this, 0, 22);
+	      Wheel3.addBox(0F, 0F, 0F, 5, 5, 2);
+	      Wheel3.setRotationPoint(-8F, -4F, 8F);
+	      Wheel3.setTextureSize(128, 32);
+	      Wheel3.mirror = true;
+	      setRotation(Wheel3, 0F, 0F, 0F);
+	      Bumper = new ModelRenderer(this, 72, 0);
+	      Bumper.addBox(0F, 0F, 0F, 2, 6, 18);
+	      Bumper.setRotationPoint(-12F, -9F, -9F);
+	      Bumper.setTextureSize(128, 32);
+	      Bumper.mirror = true;
+	      setRotation(Bumper, 0F, 0F, 0F);
+	      Wheel4 = new ModelRenderer(this, 0, 22);
+	      Wheel4.addBox(0F, 0F, 0F, 5, 5, 2);
+	      Wheel4.setRotationPoint(3F, -4F, 8F);
+	      Wheel4.setTextureSize(128, 32);
+	      Wheel4.mirror = true;
+	      setRotation(Wheel4, 0F, 0F, 0F);
   }
 
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
-    super.render(entity, f, f1, f2, f3, f4, f5);
-    setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-    CarBase.render(f5);
-    Shape1.render(f5);
-    Shape2.render(f5);
-    Shape3.render(f5);
-    Shape4.render(f5);
-    Bumper.render(f5);
+	    super.render(entity, f, f1, f2, f3, f4, f5);
+	    setRotationAngles(f, f1, f2, f3, f4, f5, entity);
+	    CarBase.render(f5);
+	    Wheel1.render(f5);
+	    Wheel2.render(f5);
+	    Wheel3.render(f5);
+	    Bumper.render(f5);
+	    Wheel4.render(f5);
   }
 
   private void setRotation(ModelRenderer model, float x, float y, float z)

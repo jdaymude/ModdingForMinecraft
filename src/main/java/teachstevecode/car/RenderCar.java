@@ -19,7 +19,7 @@ public class RenderCar extends Render
 {
     private static final ResourceLocation carTextures = new ResourceLocation(Car.MODID, "textures/blocks/car.png");
     /** instance of ModelBoat for rendering */
-    protected ModelBase modelBoat = new ModelBoat();
+    protected ModelBase modelCar = new ModelCar();
     private static final String __OBFID = "CL_00000981";
 
     public RenderCar(RenderManager p_i46190_1_)
@@ -51,7 +51,7 @@ public class RenderCar extends Render
         GlStateManager.scale(1.0F / f4, 1.0F / f4, 1.0F / f4);
         this.bindEntityTexture(p_180552_1_);
         GlStateManager.scale(-1.0F, -1.0F, 1.0F);
-        this.modelBoat.render(p_180552_1_, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
+        this.modelCar.render(p_180552_1_, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
         GlStateManager.popMatrix();
         super.doRender(p_180552_1_, p_180552_2_, p_180552_4_, p_180552_6_, p_180552_8_, p_180552_9_);
     }
