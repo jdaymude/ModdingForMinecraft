@@ -17,7 +17,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class RenderCar extends Render
 {
-    private static final ResourceLocation carTextures = new ResourceLocation(Car.MODID, "textures/textures/car.png");
+    private static final ResourceLocation carTextures = new ResourceLocation(Car.MODID, "textures/entity/car.png");
     /** instance of ModelBoat for rendering */
     protected ModelBase modelCar = new ModelCar();
     private static final String __OBFID = "CL_00000981";
