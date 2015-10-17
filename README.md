@@ -2,28 +2,18 @@
 
 Modding for Minecraft is a repository built to contain the mods developed by team TeachSteveCode in assisting CodaKid. 
 
-### What is this repository for? ###
+### ToDos ###
 
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
+## Car ##
 
-### How do I get set up? ###
+* Make item/physical models consistent (Xiao).
+* Fix positioning of player in car (Xiao).
+* Fix positioning of item held by player (Xiao).
+* Make car model larger (Xiao).
+* Make car destructible by player and player weapons (Tam).
+* Add dust particles (flames?) in the car's trail (Tam).
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+## Item Launcher ##
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+* Add item launcher model into repository.
+* Create model and texture for projectiles.
