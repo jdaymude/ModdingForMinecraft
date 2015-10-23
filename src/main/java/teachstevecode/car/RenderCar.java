@@ -47,8 +47,7 @@ public class RenderCar extends Render
         }
 
         float f4 = 0.75F;
-        GlStateManager.scale(f4, f4, f4);
-        GlStateManager.scale(1.0F / f4, 1.0F / f4, 1.0F / f4);
+        GlStateManager.scale(1.5, 1.5, 1.5);
         this.bindEntityTexture(p_180552_1_);
         GlStateManager.scale(-1.0F, -1.0F, 1.0F);
         this.modelCar.render(p_180552_1_, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
