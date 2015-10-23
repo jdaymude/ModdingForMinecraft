@@ -151,7 +151,7 @@ public class EntityCar extends Entity
                         this.dropItemWithOffset(itemCar, 1, 0.0F);
                     }
 
-                    //this.setDead();
+                    this.setDead();
                 }
 
                 return true;
@@ -240,7 +240,7 @@ public class EntityCar extends Entity
         this.velocityY = this.motionY = y;
         this.velocityZ = this.motionZ = z;
     }
-
+    
     /**
      * Called to update the entity's position/logic.
      */
@@ -261,6 +261,14 @@ public class EntityCar extends Entity
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
+        
+        if (this.rand.nextBoolean())
+        {
+        this.worldObj.spawnParticle(EnumParticleTypes.FLAME, this.prevPosX-1D , this.posY + 0.125D, this.prevPosZ, this.motionX, this.motionY, this.motionZ, new int[0]);
+
+        this.worldObj.spawnParticle(EnumParticleTypes.FLAME, this.prevPosX+1D , this.posY + 0.125D, this.prevPosZ, this.motionX, this.motionY, this.motionZ, new int[0]);
+
+        }
         
         byte b0 = 5;
         double d0 = 0.0D;
