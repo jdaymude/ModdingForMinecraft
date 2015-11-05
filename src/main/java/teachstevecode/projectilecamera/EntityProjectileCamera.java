@@ -100,13 +100,19 @@ public class EntityProjectileCamera extends EntityLiving
 	
 	public void moveCamera()
 	{
+		int positionSmoother = 5;
+		
 		//Calculate camera's new position
-		double newPosX = this.posX + (this.projectile.posX - this.posX) / 5;
-		double newPosY = this.posY + (this.projectile.posY - this.posY) / 5;
-		double newPosZ = this.posZ + (this.projectile.posZ - this.posZ) / 5;
+		double newPosX = this.posX + (this.projectile.posX - this.posX) / positionSmoother;
+		double newPosY = this.posY + (this.projectile.posY - this.posY) / positionSmoother;
+		double newPosZ = this.posZ + (this.projectile.posZ - this.posZ) / positionSmoother;
+		
+		//Calculate camera's new pitch
+		float newPitch = -1 * this.projectile.rotationPitch;
 		
 		//Set camera's new position and rotation
 		this.setPosition(newPosX, newPosY, newPosZ);
+		this.setRotation(this.rotationYaw, newPitch);
 	}
 	
 	@Override

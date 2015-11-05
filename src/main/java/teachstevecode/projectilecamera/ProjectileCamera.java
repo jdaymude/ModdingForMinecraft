@@ -36,8 +36,9 @@ public class ProjectileCamera
     {
         this.commonProxy.preInit(e);
         
-        //Register the C key for using the camera
-        useCameraKey = new KeyBinding("key.useCameraKey", Keyboard.KEY_C, "key.categories.projectilecamera");
+        //Register the key for using the camera
+        int cameraKey = Keyboard.KEY_C;
+        useCameraKey = new KeyBinding("key.useCameraKey", cameraKey, "key.categories.projectilecamera");
         ClientRegistry.registerKeyBinding(useCameraKey);
         MinecraftForge.EVENT_BUS.register(new ProjectileCameraEventHandler());
         
