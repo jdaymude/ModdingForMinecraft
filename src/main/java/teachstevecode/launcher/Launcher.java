@@ -1,6 +1,7 @@
 package teachstevecode.launcher;
 
 
+import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -11,6 +12,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import teachstevecode.launcher.grenade.EntityGrenade;
+import teachstevecode.launcher.grenade.ItemGrenade;
 
 @Mod(modid = Launcher.MODID, name = Launcher.MODNAME, version = Launcher.MODVER)
 public class Launcher 
@@ -22,6 +24,7 @@ public class Launcher
     @Instance(MODID)
     public static Launcher instance = new Launcher();
     public static ItemLauncher launcher;
+    public static Item grenade;
 
     @SidedProxy(clientSide = "teachstevecode.launcher.ClientProxy", serverSide = "teachstevecode.launcher.ServerProxy")
     public static CommonProxy proxy;
@@ -32,6 +35,7 @@ public class Launcher
         this.proxy.preInit(e);
         
         launcher = new ItemLauncher(MODID);
+        grenade = new ItemGrenade("grenade");
     }
 
     @EventHandler
@@ -41,8 +45,11 @@ public class Launcher
 
         // Register Items
         GameRegistry.registerItem(launcher, launcher.getUnlocalizedName().substring(5));
+        GameRegistry.registerItem(grenade, grenade.getUnlocalizedName().substring(5));
 
-        EntityRegistry.registerModEntity(EntityGrenade.class, "grenade", 53, this, 256, 1, false);        
+        int id = EntityRegistry.findGlobalUniqueEntityId();
+        EntityRegistry.registerGlobalEntityID(EntityGrenade.class, "grenade", id);
+        EntityRegistry.registerModEntity(EntityGrenade.class, "grenade", id, this, 256, 10, true);        
     }
 
     @EventHandler
