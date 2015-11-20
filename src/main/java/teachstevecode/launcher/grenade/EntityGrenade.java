@@ -32,7 +32,6 @@ public class EntityGrenade extends EntityThrowable
     {
     	this.worldObj.playSoundEffect(this.posX, this.posY, this.posZ, "random.bow", 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
 	
-    	System.out.println("EntityHit(0 Block, 1 Entity)   " + par1MovingObjectPosition.typeOfHit);
     	
         if (par1MovingObjectPosition.entityHit != null)
         {
