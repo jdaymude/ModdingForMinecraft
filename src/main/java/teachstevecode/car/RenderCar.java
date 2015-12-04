@@ -20,6 +20,9 @@ public class RenderCar extends Render
     private static final ResourceLocation carTextures = new ResourceLocation(Car.MODID, "textures/entity/car_texture.png");
     protected ModelBase modelCar = new ModelCar();
     private static final String __OBFID = "CL_00000981";
+    
+    //can customize car size here. size: 1-8
+    private float size = 2;
 
     public RenderCar(RenderManager p_i46190_1_)
     {
@@ -29,8 +32,12 @@ public class RenderCar extends Render
 
     public void doRender(EntityCar p_180552_1_, double p_180552_2_, double p_180552_4_, double p_180552_6_, float p_180552_8_, float p_180552_9_)
     {
+       	if (size > 8 || size < 1)
+    	{
+    		size = 2;
+    	}
         GlStateManager.pushMatrix();
-        GlStateManager.translate((float)p_180552_2_, (float)p_180552_4_ + 2.3F, (float)p_180552_6_);
+        GlStateManager.translate((float)p_180552_2_, (float)p_180552_4_ + size + .3F, (float)p_180552_6_);
         GlStateManager.rotate(270.0F - p_180552_8_, 0.0F, 1.0F, 0.0F);
         float f2 = (float)p_180552_1_.getTimeSinceHit() - p_180552_9_;
         float f3 = p_180552_1_.getDamageTaken() - p_180552_9_;
@@ -46,7 +53,7 @@ public class RenderCar extends Render
         }
 
         float f4 = 0.75F;
-        GlStateManager.scale(2, 2, 2);
+        GlStateManager.scale(size, size, size);
         this.bindEntityTexture(p_180552_1_);
         GlStateManager.scale(-1.0F, -1.0F, 1.0F);
         this.modelCar.render(p_180552_1_, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);

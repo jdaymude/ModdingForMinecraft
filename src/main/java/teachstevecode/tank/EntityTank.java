@@ -41,6 +41,7 @@ public class EntityTank extends Entity
     @SideOnly(Side.CLIENT)
     private double velocityZ;
     private static final String __OBFID = "CL_00001667";
+    private EntityLivingBase rider;
     
     private static Item itemTank;
 
@@ -51,6 +52,7 @@ public class EntityTank extends Entity
         this.speedMultiplier = 0.07D;
         this.preventEntitySpawning = true;
         this.setSize(1.5F, 0.6F);
+        rider = null;
         
         this.itemTank = (Item) Item.itemRegistry.getObject(new ResourceLocation("itemTank"));
     }
@@ -364,6 +366,15 @@ public class EntityTank extends Entity
                 float f = this.riddenByEntity.rotationYaw + -entitylivingbase.moveStrafing * 90.0F;
                 this.motionX += -Math.sin((double)(f * (float)Math.PI / 180.0F)) * this.speedMultiplier * (double)entitylivingbase.moveForward * 0.05000000074505806D;
                 this.motionZ += Math.cos((double)(f * (float)Math.PI / 180.0F)) * this.speedMultiplier * (double)entitylivingbase.moveForward * 0.05000000074505806D;
+                rider = entitylivingbase;
+                //make rider invisible
+                rider.setInvisible(true);
+            }
+            
+            else if (rider != null)
+            {
+            	rider.setInvisible(false);
+            	rider = null;
             }
 
             d2 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
