@@ -127,6 +127,10 @@ public class EntityCar extends Entity
         {
             return false;
         }
+        else if (source.getDamageType().equals("explosion") || source.getDamageType().equals("explosion.player")) { 
+        	this.setDead();
+        	return true; 
+        }
         else if (!this.worldObj.isRemote && !this.isDead)
         {
             if (this.riddenByEntity != null && this.riddenByEntity == source.getEntity() && source instanceof EntityDamageSourceIndirect)
@@ -152,7 +156,6 @@ public class EntityCar extends Entity
                     {
                         this.dropItemWithOffset(itemCar, 1, 0.0F);
                     }
-
                     this.setDead();
                 }
 
@@ -298,7 +301,7 @@ public class EntityCar extends Entity
                     d8 = this.posZ - d4 * d5 * 0.8D - d2 * d6;
                     this.worldObj.spawnParticle(EnumParticleTypes.BLOCK_DUST, d7, this.posY - 0.125D, d8, this.motionX, this.motionY, this.motionZ, new int[0]);
                 }
-                else
+                else 
                 {
                     d7 = this.posX + d2 + d4 * d5 * 0.7D;
                     d8 = this.posZ + d4 - d2 * d5 * 0.7D;

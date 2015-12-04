@@ -7,7 +7,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 
-public class ModelTankModel extends ModelBase
+public class ModelTank extends ModelBase
 {
   //fields
     ModelRenderer Barrel;
@@ -21,7 +21,7 @@ public class ModelTankModel extends ModelBase
     ModelRenderer WheelsLeft;
     ModelRenderer BackCap;
   
-  public ModelTankModel()
+  public ModelTank()
   {
 	textureWidth = 128;
     textureHeight = 128;
