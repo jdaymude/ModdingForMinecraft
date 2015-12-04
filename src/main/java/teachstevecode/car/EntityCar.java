@@ -371,6 +371,7 @@ public class EntityCar extends Entity
                 rider.setInvisible(true);
             }
             
+            //make rider visible
             else if (rider != null)
             {
             	rider.setInvisible(false);
