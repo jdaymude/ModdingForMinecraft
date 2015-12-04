@@ -442,9 +442,13 @@ public class EntityCar extends Entity
                 this.motionY *= 1.07D;
                 this.motionZ *= 1.07D;
             }
-
+            if(this.riddenByEntity == null || this.worldObj.isRemote == true)
+            {
+            this.moveEntity(0, 0, 0);
+            }
+            else{
             this.moveEntity(this.motionX, this.motionY, this.motionZ);
-
+            }
             if (this.isCollidedHorizontally)
             {            	
                 if (!this.worldObj.isRemote && !this.isDead)
