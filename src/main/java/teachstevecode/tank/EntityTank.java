@@ -44,7 +44,9 @@ public class EntityTank extends Entity
     private EntityLivingBase rider;
     
     private static Item itemTank;
-
+    
+    
+    
     public EntityTank(World worldIn)
     {
         super(worldIn);
@@ -342,9 +344,9 @@ public class EntityTank extends Entity
                     this.motionZ *= 1.0D;
                 }
 
-                this.motionX *= 0.9900000095367432D;
-                this.motionY *= 0.949999988079071D;
-                this.motionZ *= 0.9900000095367432D;
+                this.motionX *= 0.5D;
+                this.motionY *= 0.5D;
+                this.motionZ *= 0.5D;
             }
         }
         else
@@ -483,6 +485,8 @@ public class EntityTank extends Entity
                     if (block == Blocks.air || block == Blocks.water) {
                     	this.setPosition(newX, newY, newZ);
                     }
+                    
+                  
                 }
             }
             else

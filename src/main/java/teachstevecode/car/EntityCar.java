@@ -438,9 +438,9 @@ public class EntityCar extends Entity
 
             if (this.onGround)
             {
-            	this.motionX *= 1.0D;
-                this.motionY *= 1.0D;
-                this.motionZ *= 1.0D;
+            	this.motionX *= 1.07D;
+                this.motionY *= 1.07D;
+                this.motionZ *= 1.07D;
             }
 
             this.moveEntity(this.motionX, this.motionY, this.motionZ);
