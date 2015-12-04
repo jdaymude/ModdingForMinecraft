@@ -127,6 +127,10 @@ public class EntityTank extends Entity
         {
             return false;
         }
+        else if (source.getDamageType().equals("explosion") || source.getDamageType().equals("explosion.player")) { 
+        	this.setDead();
+        	return true; 
+        }
         else if (!this.worldObj.isRemote && !this.isDead)
         {
             if (this.riddenByEntity != null && this.riddenByEntity == source.getEntity() && source instanceof EntityDamageSourceIndirect)
