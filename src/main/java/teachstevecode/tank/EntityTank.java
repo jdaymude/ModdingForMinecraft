@@ -42,10 +42,11 @@ public class EntityTank extends Entity
     private double velocityZ;
     private static final String __OBFID = "CL_00001667";
     private EntityLivingBase rider;
+    private boolean particles;
+    private EnumParticleTypes particleType;
+    private int speed;
     
     private static Item itemTank;
-    
-    
     
     public EntityTank(World worldIn)
     {
@@ -55,6 +56,13 @@ public class EntityTank extends Entity
         this.preventEntitySpawning = true;
         this.setSize(1.5F, 0.6F);
         rider = null;
+        
+        //Set speed
+        this.speed = 2;
+        
+        //Set particles
+        this.particles = true;
+        this.particleType = EnumParticleTypes.BLOCK_DUST;
         
         this.itemTank = (Item) Item.itemRegistry.getObject(new ResourceLocation("itemTank"));
     }
@@ -269,13 +277,14 @@ public class EntityTank extends Entity
         this.prevPosX = this.posX;
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
-        
-        if (this.rand.nextBoolean())
+                
+        if(particles)
         {
-        this.worldObj.spawnParticle(EnumParticleTypes.FLAME, this.prevPosX-1D , this.posY + 0.125D, this.prevPosZ, this.motionX, this.motionY, this.motionZ, new int[0]);
-
-        this.worldObj.spawnParticle(EnumParticleTypes.FLAME, this.prevPosX+1D , this.posY + 0.125D, this.prevPosZ, this.motionX, this.motionY, this.motionZ, new int[0]);
-
+        	if (this.rand.nextBoolean())
+        	{
+        		this.worldObj.spawnParticle(particleType, this.prevPosX-1D , this.posY + 0.125D, this.prevPosZ, this.motionX, this.motionY, this.motionZ, new int[0]);
+        		this.worldObj.spawnParticle(particleType, this.prevPosX+1D , this.posY + 0.125D, this.prevPosZ, this.motionX, this.motionY, this.motionZ, new int[0]);
+        	}
         }
         
         byte b0 = 5;
@@ -370,8 +379,15 @@ public class EntityTank extends Entity
             {
                 EntityLivingBase entitylivingbase = (EntityLivingBase)this.riddenByEntity;
                 float f = this.riddenByEntity.rotationYaw + -entitylivingbase.moveStrafing * 90.0F;
-                this.motionX += -Math.sin((double)(f * (float)Math.PI / 180.0F)) * this.speedMultiplier * (double)entitylivingbase.moveForward * 0.05000000074505806D;
-                this.motionZ += Math.cos((double)(f * (float)Math.PI / 180.0F)) * this.speedMultiplier * (double)entitylivingbase.moveForward * 0.05000000074505806D;
+               
+                if(this.speed > 5 || this.speed < 1)
+                {
+                	 speed = 5; 
+                }
+                double speedSet = speed * .05;
+               
+                this.motionX += -Math.sin((double)(f * (float)Math.PI / 180.0F)) * this.speedMultiplier * (double)entitylivingbase.moveForward * speedSet;
+                this.motionZ += Math.cos((double)(f * (float)Math.PI / 180.0F)) * this.speedMultiplier * (double)entitylivingbase.moveForward * speedSet;
                 rider = entitylivingbase;
                 //make rider invisible
                 rider.setInvisible(true);
@@ -385,7 +401,7 @@ public class EntityTank extends Entity
             }
 
             d2 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
-
+/*
             if (d2 > 0.35D)
             {
                 d4 = 0.35D / d2;
@@ -393,7 +409,7 @@ public class EntityTank extends Entity
                 this.motionZ *= d4;
                 d2 = 0.35D;
             }
-
+*/
             if (d2 > d9 && this.speedMultiplier < 0.35D)
             {
                 this.speedMultiplier += (0.35D - this.speedMultiplier) / 35.0D;
@@ -445,9 +461,16 @@ public class EntityTank extends Entity
                 this.motionY *= 1.0D;
                 this.motionZ *= 1.0D;
             }
-
-            this.moveEntity(this.motionX, this.motionY, this.motionZ);
-
+            
+            if(this.riddenByEntity == null || this.worldObj.isRemote == true)
+            {
+            	this.moveEntity(0, 0, 0);
+            }
+            else
+            {
+            	this.moveEntity(this.motionX, this.motionY, this.motionZ);
+            }
+            
             if (this.isCollidedHorizontally)
             {            	
                 if (!this.worldObj.isRemote && !this.isDead)
