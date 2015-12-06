@@ -62,7 +62,7 @@ public class EntityTank extends Entity
         
         //Set particles
         this.particles = true;
-        this.particleType = EnumParticleTypes.BLOCK_DUST;
+        this.particleType = EnumParticleTypes.CLOUD;
         
         this.itemTank = (Item) Item.itemRegistry.getObject(new ResourceLocation("itemTank"));
     }
